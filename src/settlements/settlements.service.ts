@@ -18,6 +18,13 @@ import { AnalyticsService } from '../analytics/analytics.service';
 import { CronJobService } from '../cron/cron-job.service';
 import { RetryConfigService } from '../retry/retry-config.service';
 
+/**
+ * Settlements at or above this USD amount require manual admin approval
+ * before they are dispatched to the partner. Shared by every settlement
+ * creation path so the threshold cannot drift between them.
+ */
+export const LARGE_SETTLEMENT_THRESHOLD = 10000;
+
 interface SettlementDecisionResult {
   success: boolean;
   settlement: Settlement;
